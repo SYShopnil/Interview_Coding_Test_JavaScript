@@ -1,8 +1,8 @@
-function test() {
-  let a = (b = 0);
-  a++;
-  b--;
-  return a;
+function mainFunction() {
+  console.log("X");
+  setTimeout(function print() {
+    console.log("Y");
+  }, 100);
+  console.log("Z");
 }
-
-console.log(test(), typeof a, typeof b); //1,number,number
+mainFunction();

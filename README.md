@@ -117,3 +117,83 @@ Here in the test function when it called:
 ---
 
 **[⬆ Back to Top](#Coding-Exercise)**
+
+#### 4. What is the output of below code
+
+```javascript
+"use strict";
+function test() {
+  let a = (b = 0);
+  a++;
+  b--;
+  return a;
+}
+
+console.log(test(), typeof a, typeof b);
+```
+
+- 1: 0,number,number
+- 2: ReferenceError b is not defined
+- 3: 1,number,undefined
+- 4: 1,number,number
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+
+Concept need to understand this problem :
+
+- increment decrement operator workflow
+- Scope
+- workflow of use strict
+
+Here in the test function when it called:
+
+- 1st new variable is declared as `a` and also assign value by `b = 0`
+- Actually here `b` is not declared in the global scope implicitly way because of `use strict`.
+- That's why it gave a `ReferenceError error b is not defined `
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 5. What is the output of below code
+
+```javascript
+function mainFunction() {
+  console.log("X");
+  setTimeout(function print() {
+    console.log("Y");
+  }, 100);
+  console.log("Z");
+}
+mainFunction();
+```
+
+- 1: "X" "Y" "Z"
+- 2: Thrown a error
+- 3: "X" "Z" "Y"
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+
+Concept need to understand this problem :
+
+- How JavaScript handle Asynchronous request
+
+Coding WorkFlow:
+
+- In JavaScript when there have any Asynchronous behavior has found, Then engine keeps that type of request into WebAPI and execute all others Non Asynchronous request. After finish those request it will come to the Call Stack through out Call back queue and event loop.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
