@@ -197,3 +197,37 @@ Coding WorkFlow:
 ---
 
 **[⬆ Back to Top](#Coding-Exercise)**
+
+#### 6. What is the output of below code
+
+```javascript
+function Persons() {
+  this.name = "John Doe";
+  return "John Smith";
+}
+const firstCall = Persons();
+const secondCall = new Persons();
+console.log(firstCall);
+console.log(secondCall);
+```
+
+- 1: John Smith, John Smith
+- 2: Thrown Error
+- 3: John Smith, Persons {name: "John Doe"}
+- 4: Persons {name: "John Doe"} Persons {name: "John Doe"}
+- 5: John Smith, John Smith
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+
+Here when the firstCall happen it will call that function with out `new Key word`. That's why it will return `"John Smith"`. Because without using `new keyword` a constructor function can not create a instance of a object.
+So when the `secondCall` happen with new keyword that time it will create a instance of `Persons` constructor and give that instance as an output object.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
