@@ -84,7 +84,7 @@ console.log(test(), typeof a, typeof b);
 - 1: 0,number,number
 - 2: ReferenceError b is not defined
 - 3: 1,number,undefined
-- 4: 1,number,number
+- 4: 1,undefined,number
 
 <details><summary><b>Answer</b></summary>
 <p>
@@ -108,7 +108,7 @@ Here in the test function when it called:
   Here `b` is in the global scope. You can access this `b` in window or global object.
 - After increment by 1 (a++) `a` is now `1` and after decrement by 1 (b--) b is now `-1'
 - Test() function returns `a` which is `1`
-  -typeof `a` is `number`
+  -typeof `a` is `undefined` because it is not exist outside the function scope
   -typeof `b` is `number`
 
 </p>
@@ -224,6 +224,66 @@ console.log(secondCall);
 
 Here when the firstCall happen it will call that function with out `new Key word`. That's why it will return `"John Smith"`. Because without using `new keyword` a constructor function can not create a instance of a object.
 So when the `secondCall` happen with new keyword that time it will create a instance of `Persons` constructor and give that instance as an output object.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 7. What is the output of below code
+
+```javascript
+console.log(0.1 + 0.2 === 0.3);
+```
+
+- 1: false
+- 2: true
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+
+It will happen because of floating problem. If we make a addition between `0.1 + 0.2` it will give a result of `0.300000000004` somethings like this.
+So Comparing between `0.1 + 0.2 == 0.3` is like `0.3000000004 == 0.3` which is no make sense. So that it will give false
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 8. What is the output of below code
+
+#### 9. What is the output of below code
+
+#### 10. What is the output of below code
+
+```javascript
+let a = 1;
+function func() {
+  return 5;
+}
+if (func()) {
+  a += typeof func;
+}
+console.log(a);
+```
+
+- 1: 6
+- 2: ReferenceError
+- 3: 1function
+- 4: 1undefined
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+
+In the if condition block `func()` is `true`. So it will concat `1` with `typeof` `func()` is `function` . So the new value of `a` will be `1function`
 
 </p>
 </details>

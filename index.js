@@ -7,11 +7,14 @@
 // }
 // mainFunction();
 //  console.log (["  55   "] / "5")
-function Perons () {
-    this.name = "John Doe"
-    return "John Smith"
+
+
+let a = 1;
+function func() 
+{
+    return 5
 }
-const firstCall =  Perons ();
-const secondCall =  new Perons ();
-console.log(firstCall)
-console.log(secondCall)
+if (func()) {
+  a += typeof func;
+}
+console.log(a);
