@@ -258,7 +258,63 @@ So Comparing between `0.1 + 0.2 == 0.3` is like `0.3000000004 == 0.3` which is n
 
 #### 8. What is the output of below code
 
+```javascript
+console.log((0.1 + 0.2).toFixed(1) == 0.3);
+```
+
+- 1: false
+- 2: true
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+
+When we compare between `0.1 + 0.2 == 0.3` it will look like this `0.30000004 == 0.3` that's why it will give false but when we use `toFixed(1)` method,
+We know toFixed() method will fixed the fractional in a fix range. When we fix that amount to `(1)` that time actually it will compare like this way -
+`0.3 == 0.3 ` which is true.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
 #### 9. What is the output of below code
+
+```javascript
+let a = 1;
+if (
+  function func() {
+    return 5;
+  }
+) {
+  a += typeof func;
+}
+console.log(a);
+```
+
+- 1: 6
+- 2: ReferenceError
+- 3: 1function
+- 4: 1undefined
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+
+We know that in the if block it just keep a expression. So here in the if condition block a `function` exist but it will keep the expression not a function reference. So here `func(){}` will just convert to boolean.
+Since there don't have any reference of `function` `func (){}` so it's type is `undefined` because of `hoisting`.
+So ultimately it will just concat `1` with `undefined` and give a result `1undefined` because of assign operator `+=` assignment operator
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
 
 #### 10. What is the output of below code
 
