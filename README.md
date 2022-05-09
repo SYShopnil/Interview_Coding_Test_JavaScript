@@ -318,28 +318,29 @@ So ultimately it will just concat `1` with `undefined` and give a result `1undef
 
 #### 10. What is the output of below code
 
+#### 11. What is the output of below code
+
 ```javascript
-let a = 1;
-function func() {
-  return 5;
+function hello() {
+  return;
+  {
+    message: "Hello World";
+  }
 }
-if (func()) {
-  a += typeof func;
-}
-console.log(a);
+console.log(hello());
 ```
 
-- 1: 6
-- 2: ReferenceError
-- 3: 1function
-- 4: 1undefined
+- 1: "Hello World"
+- 2: {message: "Hello World"}
+- 3: Syntax error
+- 4: undefined
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-##### Answer: 3
+##### Answer: 4
 
-In the if condition block `func()` is `true`. So it will concat `1` with `typeof` `func()` is `function` . So the new value of `a` will be `1function`
+Because of using `;` after return the statement will end and return `undefined`.
 
 </p>
 </details>

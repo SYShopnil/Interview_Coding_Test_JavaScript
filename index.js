@@ -9,12 +9,10 @@
 //  console.log (["  55   "] / "5")
 
 
-let a = 1;
-function func() 
-{
-    return 5
+function hello() {
+  return
+  {
+    message: "Hello World";
+  }
 }
-if (func()) {
-  a += typeof func;
-}
-console.log(a);
+console.log(hello());
