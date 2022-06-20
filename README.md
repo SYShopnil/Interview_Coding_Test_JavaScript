@@ -378,3 +378,274 @@ Because of using `;` after return the statement will end and return `undefined`.
 ---
 
 **[⬆ Back to Top](#Coding-Exercise)**
+
+#### 12. What is the output of below code
+
+```javascript
+const students = ["Mr John", "Mr Smith", "Ms Jannat"]
+delete students[0];
+console.log (students)
+console.log (students[0])
+console.log (students.length)
+
+```
+
+- 1: [empty, "Mr Smith", "Ms Jannat"], empty, 2
+- 2: [empty, "Mr Smith", "Ms Jannat"], empty, 3
+- 3: [empty, "Mr Smith", "Ms Jannat"], undefined, 3
+- 4: [null, "Mr Smith", "Ms Jannat"], undefined, 3
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+
+`delete` operator always remove the value of an array but it does not remvove the index number. So the index number then show `empty`. But when anyone trying to access that array index that time it will give ``. 
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+
+#### 13. What is the output of below code
+
+```javascript
+let exerciseOne = new Array(3);
+console.log(exerciseOne);
+
+let exerciseTwo = [];
+exerciseTwo[2] = 100;
+console.log(exerciseTwo);
+
+let exerciseThree = [, , ,];
+console.log(exerciseThree);
+```
+
+- 1: [undefined × 3], [undefined × 2, 100], [undefined × 3]
+- 2: [empty × 3], [empty × 2, 100], [empty × 3]
+- 3: [null × 3], [null × 2, 100], [null × 3]
+- 4: [], [100], []
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+
+The latest chrome versions display sparse array(they are filled with holes) using this empty x n notation. Whereas the older versions have undefined x n notation. Note: The latest version of FF displays n empty slots notation.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 14. What is the output of below code
+
+```javascript
+const obj = {
+  prop1: function () {
+    return 0;
+  },
+  prop2() {
+    return 1;
+  },
+  ["prop" + 3]() {
+    return 2;
+  },
+};
+console.log(obj.prop1());
+console.log(obj.prop2());
+console.log(obj.prop3());
+```
+
+- 1: 0, 1, 2
+- 2: 0, { return 1 }, 2
+- 3: 0, { return 1 }, { return 2 }
+- 4: 0, 1, undefined
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+
+ES6 provides method definitions and property shorthands for objects. So both prop2 and prop3 are treated as regular function values.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 15. What is the output of below code
+
+```javascript
+console.log(1 < 2 < 3);
+console.log(3 > 2 > 1);
+```
+
+- 1: true, false
+- 2: false, true
+- 3: true, true
+- 4: false, false
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+
+It will check step by step. It will check first two operand and compare between two and as a output it will return a boolean vlaue. Then with that boolean it will compare the rest part. 
+`For example for example 1 `
+First it will check `1 < 2 ` 
+Form there it will get a boolean value `false`
+Then it will compare `false < 2`
+Which will give a new boolean value `true`
+An ultimately it will give `true` 
+
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 16. What is the output of below code
+
+```javascript
+function student (name, age, name) {
+  console.log (name, age, name)
+}
+student ("John Doe", 25, "John Smith")
+```
+
+- 1: undefiend, 25, undefined
+- 2: John Doe, 25, John Smith
+- 3: Error (Duplicate parameter not allowed in this context)
+- 4: John Smith, 25, John Smith
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+In a non-strict mode regular Javascript function accept multiple parameter and give the latest one.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 17. What is the output of below code
+
+```javascript
+function student (name, age, name = "John Paul") {
+  console.log (name, age, name)
+}
+student ("John Doe", 25, "John Smith")
+```
+
+- 1: undefiend, 25, undefined
+- 2: John Doe, 25, John Smith
+- 3: Error (Duplicate parameter not allowed in this context)
+- 4: John Smith, 25, John Smith
+- 5: John Smith, 25, John Paul
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+In a non-strict mode regular Javascript function accept multiple parameter and give the latest one. But when default value will be assign in the multiple parameter that time it will give an error. 
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 18. What is the output of below code
+
+```javascript
+const student  = (name, age, name) => {
+  console.log (name, age, name)
+}
+student ("John Doe", 25, "John Smith")
+```
+
+- 1: undefiend, 25, undefined
+- 2: John Doe, 25, John Smith
+- 3: Error (Duplicate parameter not allowed in this context)
+- 4: John Smith, 25, John Smith
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+In a non-strict mode regular Javascript function accept multiple parameter and give the latest one. But arrow function doesn't support multiple parameter.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 19. What is the output of below code
+
+```javascript
+function normalFunction () {
+  return arguments.length 
+}
+console.log(normalFunction(1, 2, 3));
+```
+
+- 1: ReferenceError: arguments is not defined
+- 2: 3
+- 3: undefined
+- 4: null
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+In the Normal Javascript function has a default arguments property where all arguments are store.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 20. What is the output of below code
+
+```javascript
+const arrowFunc = () => arguments.length;
+console.log(arrowFunc(1, 2, 3));
+```
+
+- 1: ReferenceError: arguments is not defined
+- 2: 3
+- 3: undefined
+- 4: null
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+In the Normal Javascript function has a default arguments property where all arguments are store. But Arrow function doesn't have any `Arguments property, new, super, this`.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
