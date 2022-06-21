@@ -649,3 +649,909 @@ In the Normal Javascript function has a default arguments property where all arg
 ---
 
 **[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 21. What is the output of below code
+
+```javascript
+console.log (Math.max())
+console.log (Math.min())
+```
+
+- 1: Infinity, -Infinity
+- 2: -Infinity, Infinity
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+-Infinity is the initial comparant because almost every other value is bigger. So when no arguments are provided, -Infinity is going to be returned. Note: Zero number of arguments is a valid case.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 22. What is the output of below code
+
+```javascript
+console.log(25 == [25]);
+console.log(25 == [[[[[[[25]]]]]]]);
+```
+
+- 1: true, false
+- 2: true, true
+- 3: false, true
+- 4: false, false 
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+When a Non Primitve or Refference type datatype will compare with a primitive datatype. That time -
+First The Non Primitive Data will call it's own method `valueOf()` 
+Then it will call it's own method `toString()`
+Then it will compare with the Primitive datatype.
+Example:
+```
+  25 == Number ([25].valueOf().toString())
+```
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 23. What is the output of below code
+
+```javascript
+console.log([0] == false);
+if ([0]) {
+  console.log("I'm True");
+} else {
+  console.log("I'm False");
+}
+```
+
+- 1: True, I'm True
+- 2: True, I'm False
+- 3: False, I'm True
+- 4: False, I'm False 
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+In comparison operators, the expression [0] converted to Number([0].valueOf().toString()) which is resolved to false. Whereas [0] just becomes a truthy value without any conversion because there is no comparison operator.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 24. What is the output of below code
+
+```javascript
+console.log([1, 2] + [3, 4]);
+```
+
+- 1: [1,2,3,4]
+- 2: [1,2][3,4]
+- 3: SyntaxError
+- 4: 1,23,4 
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+The + operator is not meant or defined for arrays. So it converts arrays into strings and concatenates them.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 25. What is the output of below code
+
+```javascript
+const numbers = new Set([1, 1, 2, 3, 4]);
+console.log(numbers);
+
+const browser = new Set("Firefox");
+console.log(browser);
+```
+
+- 1: {1, 2, 3, 4}, {"F", "i", "r", "e", "f", "o", "x"}
+- 2: {1, 2, 3, 4}, {"F", "i", "r", "e", "o", "x"}
+- 3: [1, 2, 3, 4], ["F", "i", "r", "e", "o", "x"]
+- 4: {1, 1, 2, 3, 4}, {"F", "i", "r", "e", "f", "o", "x"}
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+Since Set object is a collection of unique values, it won't allow duplicate values in the collection. At the same time, it is case sensitive data structure.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 26. What is the output of below code
+
+```javascript
+console.log(NaN === NaN);
+```
+
+- 1: False
+- 2: True
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+JavaScript follows IEEE 754 spec standards. As per this spec, NaNs are never equal for floating-point numbers.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 27. What is the output of below code
+
+```javascript
+let numbers = [1, 2, 3, 4, NaN];
+console.log(numbers.indexOf(NaN));
+```
+
+- 1: true
+- 2: NaN
+- 3: SyntaxError
+- 4: -1
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+The `indexOf` uses strict equality operator(===) internally and NaN === NaN evaluates to false. Since indexOf won't be able to find NaN inside an array, it returns -1 always. But you can use Array.prototype.findIndex method to find out the index of NaN in an array or You can use Array.prototype.includes to check if NaN is present in an array or not.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+
+#### 28. What is the output of below code
+
+```javascript
+let numbers = [1, 2, 3, 4, NaN];
+console.log(numbers.includes(NaN));
+```
+
+- 1: true
+- 2: NaN
+- 3: SyntaxError
+- 4: -1
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+The `indexOf` uses strict equality operator(===) internally and NaN === NaN evaluates to false. But `include` method compare data that is it exist or not. If it exists then it will return `true` otherwise `false`.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 29. What is the output of below code
+
+```javascript
+let [a, ...b,] = [1, 2, 3, 4, 5];
+console.log(a, b);
+```
+
+- 1: 1, [2, 3, 4, 5]
+- 2: 1, {2, 3, 4, 5}
+- 3: SyntaxError
+- 4: 1, [2, 3, 4]
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+When using rest parameters, trailing commas are not allowed and will throw a SyntaxError. If you remove the trailing comma then it displays 1st answer
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 30. What is the output of below code
+
+```javascript
+async function func() {
+  return 10;
+}
+console.log(func());
+```
+
+- 1: Promise {<fulfilled>: 10}
+- 2: 10
+- 3: SyntaxError
+- 4: Promise {<resolved>: undefined}
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+The await expression returns value 10 with promise resolution and the code after each await expression can be treated as existing in a .then callback. In this case, there is no return expression at the end of the function. Hence, the default return value of undefined is returned as the resolution of the promise. The above async function is equivalent to below expression,
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 31. What is the output of below code
+
+```javascript
+async function func() {
+  await 10;
+}
+console.log(func());
+```
+
+- 1: Promise {<fulfilled>: 10}
+- 2: 10
+- 3: SyntaxError
+- 4: Promise {<rejected>: 10}
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+Async functions always return a promise. But even if the return value of an async function is not explicitly a promise, it will be implicitly wrapped in a promise. The above async function is equivalent to below expression,
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 32. What is the output of below code
+
+```javascript
+function delay() {
+  return new Promise(resolve => setTimeout(resolve, 2000));
+}
+
+async function delayedLog(item) {
+  await delay();
+  console.log(item);
+}
+
+async function processArray(array) {
+  array.forEach(item => {
+    await delayedLog(item);
+  })
+}
+
+processArray([1, 2, 3, 4]);
+```
+
+- 1: SyntaxError
+- 2: 1, 2, 3, 4
+- 3: 4, 4, 4, 4
+- 4: 4, 3, 2, 1
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+In the forEach method inside the call back function there need to have a `async` function to exectue the `await` operation. Because to execute the `await` operation need to have a async function. 
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 33. What is the output of below code
+
+```javascript
+function delay() {
+  return new Promise((resolve) => setTimeout(resolve, 2000));
+}
+
+async function delayedLog(item) {
+  await delay();
+  console.log(item);
+}
+
+async function process(array) {
+  array.forEach(async (item) => {
+    await delayedLog(item);
+  });
+  console.log("Process completed!");
+}
+process([1, 2, 3, 5]);
+```
+
+- 1: 1 2 3 5 and Process completed!
+- 2: 5 5 5 5 and Process completed!
+- 3: Process completed! and 5 5 5 5
+- 4: Process completed! and 1 2 3 5
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+The forEach method will not wait until all items are finished but it just runs the tasks and goes next. Hence, the last statement is displayed first followed by a sequence of promise resolutions.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 34. What is the output of below code
+
+```javascript
+function delay() {
+  return new Promise((resolve) => setTimeout(resolve, 2000));
+}
+
+async function delayedLog(item) {
+  await delay();
+  console.log(item);
+}
+async function processArray(array) {
+  for (const item of array) {
+    await delayedLog(item);
+  }
+  console.log("Process completed!");
+}
+processArray([1, 2, 3, 5]);
+```
+
+- 1: 1 2 3 5 and Process completed!
+- 2: 5 5 5 5 and Process completed!
+- 3: Process completed! and 5 5 5 5
+- 4: Process completed! and 1 2 3 5
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+By using `for...of` loop first the `await` part will execute. After that the `console.log()` part will be execute.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 35. What is the output of below code
+
+```javascript
+let set = new Set();
+set.add("+0").add("-0").add(NaN).add(undefined).add(NaN);
+console.log(set);
+```
+
+- 1: Set(4) {"+0", "-0", NaN, undefined}
+- 2: Set(3) {"+0", NaN, undefined}
+- 3: Set(5) {"+0", "-0", NaN, undefined, NaN}
+- 4: Set(4) {"+0", NaN, undefined, NaN}
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+In Set() `+0` and `-0` are not same. They are not unique.
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 36. What is the output of below code
+
+```javascript
+const sym1 = Symbol("one");
+const sym2 = Symbol("one");
+
+const sym3 = Symbol.for("two");
+const sym4 = Symbol.for("two");
+
+cnsooe.log(sym1 === sym2, sym3 === sym4);
+```
+
+- 1: true, true
+- 2: true, false
+- 3: false, true
+- 4: false, false
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+
+Symbol follows below conventions,
+
+Every symbol value returned from Symbol() is unique irrespective of the optional string.
+Symbol.for() function creates a symbol in a global symbol registry list. But it doesn't necessarily create a new symbol on every call, it checks first if a symbol with the given key is already present in the registry and returns the symbol if it is found. Otherwise a new symbol created in the registry.
+Note: The symbol description is just useful for debugging purposes.
+
+
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 37. What is the output of below code
+
+```javascript
+const sym1 = new Symbol("one");
+console.log(sym1);
+```
+
+- 1: SyntaxError
+- 2: one
+- 3: Symbol('one')
+- 4: Symbol
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+
+Symbol is a just a standard function and not an object constructor(unlike other primitives new Boolean, new String and new Number). So if you try to call it with the new operator will result in a TypeError
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 38. What is the output of below code
+
+```javascript
+console.log(
+  JSON.stringify({ myArray: ["one", undefined, function () {}, Symbol("")] })
+);
+console.log(
+  JSON.stringify({ [Symbol.for("one")]: "one" }, [Symbol.for("one")])
+);
+```
+
+- 1: {"myArray":['one', undefined, {}, Symbol]}, {}
+- 2: {"myArray":['one', null,null,null]}, {}
+- 3: {"myArray":['one', null,null,null]}, "{ [Symbol.for('one')]: 'one' }, [Symbol.for('one')]"
+- 4: {"myArray":['one', undefined, function(){}, Symbol('')]}, {}
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+
+The symbols has below constraints,
+
+- 1. The undefined, Functions, and Symbols are not valid JSON values. So those values are either omitted (in an object) or changed to null (in an array). Hence, it returns null values for the value array.
+
+- 2.  All Symbol-keyed properties will be completely ignored. Hence it returns an empty object({}).
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 39. What is the output of below code
+
+```javascript
+class A {
+  constructor() {
+    console.log(new.target.name);
+  }
+}
+
+class B extends A {
+  constructor() {
+    super();
+  }
+}
+
+new A();
+new B();
+```
+
+- 1: A, A
+- 2: A, B
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+
+Using constructors, new.target refers to the constructor (points to the class definition of class which is initialized) that was directly invoked by new. This also applies to the case if the constructor is in a parent class and was delegated from a child constructor.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 40. What is the output of below code
+
+```javascript
+const [x, ...y] = [1, 2, 3, 4];
+console.log(x, y);
+```
+
+- 1: 1, [2, 3, 4]
+- 2: 1, [2, 3]
+- 3: 1, [2]
+- 4: SyntaxError
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+Here `....` means `Rest` operator. Which wrap all rest data as a new array. 
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 41. What is the output of below code
+
+```javascript
+const { a: x = 10, b: y = 20 } = { a: 30 };
+
+console.log(x);
+console.log(y);
+```
+
+- 1: 30, 20
+- 2: 10, 20
+- 3: 10, undefined
+- 4: 30, undefined
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+Here in the object distrutring part Both time a default value has been set. But when a data has been found from the object that time the particular default value will be ignored
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+
+#### 42. What is the output of below code
+
+```javascript
+function area({ length = 10, width = 20 }) {
+  console.log(length * width);
+}
+
+area();
+```
+
+- 1: 200
+- 2: Error
+- 3: undefined
+- 4: 0
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+Here in the parameter section it has been set a default value of object. But this is not a valid way to declare a paratmeter. That's why it will give a Error of undefined
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 43. What is the output of below code
+
+```javascript
+function area({ length = 10, width = 20 } = {}) {
+  console.log(length * width);
+}
+
+area();
+```
+
+- 1: 200
+- 2: Error
+- 3: undefined
+- 4: 0
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+Here in the parameter section it has been set a default value of object. But it has been distructure from an object. So that it will get as a regular value. 
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+#### 44. What is the output of below code
+
+```javascript
+function area({ length = 10, width = 20 } = {}) {
+  console.log(length * width);
+}
+
+area({length: 5});
+```
+
+- 1: 200
+- 2: Error
+- 3: undefined
+- 4: 100
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 4
+Here in the parameter section it has been set a default value of object. But as a argument a object has been sent to that function and there a property exist name `lenght`. Sothat in the parameter section as a length it will get `5` and as a value of width it will get `20` which is the deafult value.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 45. What is the output of below code
+
+```javascript
+const props = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Jack" },
+  { id: 3, name: "Tom" },
+];
+
+const [, , { name }] = props;
+console.log(name);
+```
+
+- 1: Tom
+- 2: Error
+- 3: undefined
+- 4: John
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+First it will distructure the array and then it will distucture the object property and got the value `Tom`.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 46. What is the output of below code
+
+```javascript
+function checkType(num = 1) {
+  console.log(typeof num);
+}
+
+checkType();
+checkType(undefined);
+checkType("");
+checkType(null);
+```
+
+- 1: number, undefined, string, object
+- 2: undefined, undefined, string, object
+- 3: number, number, string, object
+- 4: number, number, number, number
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+First of all it will get the default value which is a `number`
+Then it will get a undefined. Since it is a undefined sothat it will get the deafult paratmeter which is a `number`
+Then it will get a `String` and `Object` respectively. 
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 47. What is the output of below code
+
+```javascript
+function add(item, items = []) {
+  items.push(item);
+  return items;
+}
+
+console.log(add("Orange"));
+console.log(add("Apple"));
+```
+
+- 1: ['Orange'], ['Orange', 'Apple']
+- 2: ['Orange'], ['Apple']
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+Here both function call is separate sothat there don't have any relation between those. So each time it will create a new object of item.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 48. What is the output of below code
+
+```javascript
+function greet(greeting, name, message = greeting + " " + name) {
+  console.log([greeting, name, message]);
+}
+
+greet("Hello", "John");
+greet("Hello", "John", "Good morning!");
+```
+
+- 1: SyntaxError
+- 2: ['Hello', 'John', 'Hello John'], ['Hello', 'John', 'Good morning!']
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 2
+In the first example `Two` arguments has been passed but there have `Three` arguments. So default parameter will auto assign.
+But in the next example when all `Three` argument has been passed that time it will give as expect result
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 49. What is the output of below code
+
+```javascript
+function outer(f = inner()) {
+  function inner() {
+    return "Inner";
+  }
+}
+outer();
+```
+
+- 1: ReferenceError
+- 2: Inner
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 1
+When the `outer()` function has been invoked that time it will create the createion phase of the `outer()` function but in the creation phase it will first assign the `Arguments` part and then assign that value into the `local` variable but if ther don't have any argument and if there have any default value then it will auto assign that value. But here when the default will assigned it wll find the `inner()` function. But till now the `inner` function is not keep in the track. So it will thrown a Refference error.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 50. What is the output of below code
+
+```javascript
+function myFun(x, y, ...manyMoreArgs) {
+  console.log(manyMoreArgs);
+}
+myFun(1, 2, 3, 4, 5);
+myFun(1, 2);
+```
+
+- 1: [3, 4, 5], undefined
+- 2: SyntaxError
+- 3: [3, 4, 5], []
+- 4: [3, 4, 5], [undefined]
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+`Rest` operator always keep data into `array`. But if no data has been passed into the `Rest` paramenter then it will give a empty array.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+
+#### 51. What is the output of below code
+
+```javascript
+const obj = { key: "value" };
+const array = [...obj];
+console.log(array);
+```
+
+- 1: ['key', 'value']
+- 2: TypeError
+- 3: []
+- 4: ['key']
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+##### Answer: 3
+Inside an `Object` `Array` can be ittarable. But inside a `Array` an `Object` can not be ittarable.
+
+</p>
+</details>
+
+---
+
+**[⬆ Back to Top](#Coding-Exercise)**
+
+

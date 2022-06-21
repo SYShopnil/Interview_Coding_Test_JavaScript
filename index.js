@@ -32,6 +32,11 @@
 // checkType(undefined);
 // checkType("");
 // checkType(null);
-
-function normalFunction () {return arguments.length }
-console.log(normalFunction(1, 2, 3));
+// console.log(25 == [25]);
+// console.log(25 == [[[[[[[25]]]]]]]);
+function outer(f = inner) {
+  function inner() {
+    return "Inner";
+  }
+}
+outer();
